@@ -7,12 +7,7 @@ const ListWrapper = () => (
     <ul
     className="listWrapper__wrapper">
         {twitterAccounts.map(item => (
-            <ListItem
-                image={item.image}
-                name={item.name}
-                description={item.description}
-                link={item.twitterLink}
-            />
+            <ListItem key={item.name} {...item}/>
         ))}
     </ul>
 );
