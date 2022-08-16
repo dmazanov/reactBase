@@ -36,8 +36,8 @@ ListItem.propTypes = {
     twitterLink: PropTypes.string.isRequired
 };
 
-ListItemdefaultProps = {
+ListItem.defaultProps = {
     description: 'One of the React creators',
-}
+};
 
 export default ListItem;
