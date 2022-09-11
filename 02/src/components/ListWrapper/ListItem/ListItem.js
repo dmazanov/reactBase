@@ -22,7 +22,8 @@ const ListItem = ({
                 {description}
             </p>
             <a href={twitterLink}
-            className="listItem__button">
+               target="_blank"
+                className="listItem__button">
                 visit twitter page
             </a>
         </div>
