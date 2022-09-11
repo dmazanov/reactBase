@@ -1,8 +1,9 @@
 import React from 'react';
 import ListWrapper from './components/ListWrapper/ListWrapper';
 import './index.css';
+import Form from "./components/Form/Form";
 
-const initialStateArray = [
+const initialStateItems = [
     {
         image: 'https://static.vecteezy.com/system/resources/previews/001/209/957/non_2x/square-png.png',
         name: 'Dan Abramov',
@@ -31,8 +32,12 @@ const initialStateArray = [
 
 class App extends React.Component {
     state = {
-        items: [...initialStateArray],
+        items: [...initialStateItems],
+    }
 
+    addItem = (e) => {
+        e.preventDefault();
+        console.log(e.target.value);
     }
 
     render() {
@@ -41,6 +46,7 @@ class App extends React.Component {
                 <ListWrapper
                     items={this.state.items}
                 />
+                <Form submintFn={this.addItem} />
             </div>
         )
     }
