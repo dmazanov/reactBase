@@ -23,7 +23,8 @@ const ListItem = ({
             </p>
             <a href={twitterLink}
                target="_blank"
-                className="listItem__button">
+               rel="noopener noreferrer"
+               className="listItem__button">
                 visit twitter page
             </a>
         </div>
