@@ -1,48 +1,55 @@
 import React from 'react';
-import './Form.css';
+import styles from './Form.module.scss';
+
 
 const Form = ({submitFn}) => (
-    <div className="form__wrapper">
+    <div className={styles.wrapper}>
         <h2>Add new twitter account</h2>
-        <form className="form__form" onSubmit={submitFn}>
-            <div className="form__item">
+        <form className={styles.form} onSubmit={submitFn}>
+            <div className={styles.formItem}>
                 <input
+                    className={styles.input}
                     type="text"
                     name="name"
-                    id="name" placeholder=" " maxLength="30"
+                    id="name" 
+                    placeholder=" " maxLength="30"
                 />
-                <label htmlFor="name">Name</label>
-                <div className="forms__item__bar"></div>
+                <label className={styles.label} htmlFor="name">Name</label>
+                <div className={styles.formItemBar}></div>
             </div>
-            <div className="form__item">
-                <input type="text"
+            <div className={styles.formItem}>
+                <input 
+                       className={styles.input}
+                       type="text"
                        name="link"
-                       id="link" placeholder=" "
+                       id="link" 
+                       placeholder=" "
                 />
-                <label htmlFor="link">Link</label>
-                <div className="forms__item__bar"></div>
+                <label className={styles.label} htmlFor="link">Link</label>
+                <div className={styles.formItemBar}></div>
             </div>
-            <div className="form__item">
-                <input type="text"
+            <div className={styles.formItem}>
+                <input 
+                       className={styles.input}
+                       type="text"
                        name="image"
-                       id="image" placeholder=" "
+                       id="image" 
+                       placeholder=" "
                 />
-                <label htmlFor="image">Image</label>
-                <div className="forms__item__bar"></div>
+                <label className={styles.label} htmlFor="image">Image</label>
+                <div className={styles.formItemBar}></div>
             </div>
-            <div className="form__item">
+            <div className={styles.formItem}>
                 <textarea
+                    className={styles.textarea}
                     name="description"
                     id="description"
                     placeholder=" "
                 />
-                <label htmlFor="description">Description</label>
-                <div className="forms__item__bar"></div>
+                <label className={styles.label} htmlFor="description">Description</label>
+                <div className={styles.formItemBar}></div>
             </div>
-            <button
-                type="submit"
-                className="form__button"
-            >
+            <button className={styles.button} >
                 add new item
             </button>
         </form>
