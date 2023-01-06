@@ -7,11 +7,15 @@ const ListItem = ({
     name,
     description,
     twitterLink
-}) => (
-    <li className={styles.wrapper}>
-        <img
+}) => {
+
+    const ImageTag = image ? 'img' : 'div';
+
+    return (
+        <li className={styles.wrapper}>
+        <ImageTag
             src={image}
-            className={styles.image}
+            className={image ? styles.image : styles.imageNone}
             alt={name}
         />
         <div>
@@ -29,16 +33,18 @@ const ListItem = ({
             </a>
         </div>
     </li>
-);
+    )
+};
 
 ListItem.propTypes = {
+    image: PropTypes.string,
     name: PropTypes.string.isRequired,
     description: PropTypes.string,
-    image: PropTypes.string.isRequired,
     twitterLink: PropTypes.string.isRequired
 };
 
 ListItem.defaultProps = {
+    image: null,
     description: 'One of the React creators',
 };
 
