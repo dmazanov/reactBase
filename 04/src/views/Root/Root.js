@@ -1,4 +1,8 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ArticlesView from "../ArticlesView/ArticlesView";
+import NotesView from "../NotesView/NotesView";
+import TwittersView from "../TwittersView/TwittersView";
 
 const initialStateItems = [
   {
@@ -33,9 +37,13 @@ class Root extends React.Component {
 
   render() {
     return (
-      <div>
-          <h1>Hello world</h1>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<TwittersView  />} />
+          <Route path="/articles" element={<ArticlesView />} />
+          <Route path="/notes" element={<NotesView />} />
+        </Routes>
+      </BrowserRouter>
     );
   }
 }
