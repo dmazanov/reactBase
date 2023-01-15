@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Button.module.scss';
 
-const Button = ({ children, href, secondary }) => {
+const Button = ({ children, href, secondary, ...props }) => {
 
   const buttonClass = secondary ? styles.secondary : styles.button
 
@@ -19,7 +19,7 @@ const Button = ({ children, href, secondary }) => {
             {children}
           </a>
         ) : (
-            <button className={buttonClass}>
+            <button className={buttonClass} {...props}>
               {children}
             </button>
           )
