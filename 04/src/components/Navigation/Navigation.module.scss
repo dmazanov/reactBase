@@ -1,0 +1,19 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.navItem {
+  list-style: none;
+
+  &Link {
+    text-decoration: none;
+    color: #818181;
+
+    &Active {
+      @extend .navItemLink;
+      font-weight: 700;
+    }
+  }
+
+}
