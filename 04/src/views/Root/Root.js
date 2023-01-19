@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import AppContext from '../../context';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ArticlesView from "../ArticlesView/ArticlesView";
 import NotesView from "../NotesView/NotesView";
@@ -7,19 +8,15 @@ import TwittersView from "../TwittersView/TwittersView";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
 
-const initialStateItems = [
-  {
-    image: "https://media-thumbs.golden.com/ZmJ_IKu3lu990Y0AEMnTva3gPus=/200x200/smart/golden-media.s3.amazonaws.com%2Ftopic_images%2F9d7886fae3ed43b087619486434a7f95.jpeg",
-    name: "Dan Abramov",
-    description: "React core member",
-    twitterLink: "https://twitter.com/dan_abramov"
-  }
-];
 
 class Root extends React.Component {
   state = {
-    items: [...initialStateItems],
-    isModalOpen: true,
+    items: {
+      twitters: [],
+      articles:[],
+      notes: [],
+    },
+    isModalOpen: false,
   };
 
   addItem = e => {
@@ -53,16 +50,23 @@ class Root extends React.Component {
 
   render() {
     const { isModalOpen } = this.state;
+    const contextElements = {
+      ...this.state,
+      addItem: this.addItem,
+      name: 'Roman',
+    }
 
     return (
       <BrowserRouter>
-        <Header openModalFn={this.openModal} />
-        <Routes>
-          <Route exact path="/" element={<TwittersView  />} />
-          <Route path="/articles" element={<ArticlesView />} />
-          <Route path="/notes" element={<NotesView />} />
-        </Routes>
-        { isModalOpen && <Modal  closeModalFn={this.closeModal} /> }
+        <AppContext.Provider value={contextElements}>
+          <Header openModalFn={this.openModal} />
+          <Routes>
+            <Route exact path="/" element={<TwittersView  />} />
+            <Route path="/articles" element={<ArticlesView />} />
+            <Route path="/notes" element={<NotesView />} />
+          </Routes>
+          { isModalOpen && <Modal closeModalFn={this.closeModal} /> }  
+        </AppContext.Provider>
       </BrowserRouter>
     );
   }
