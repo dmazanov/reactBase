@@ -37,13 +37,6 @@ class Form extends React.Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-
-    console.log(`
-      title: ${this.state.title},
-      link: ${this.state.link},
-      image: ${this.state.image},
-      description: ${this.state.description},
-    `);
   };
 
   render() {
@@ -56,7 +49,7 @@ class Form extends React.Component {
             <form 
               autoComplete="off" 
               className={styles.form} 
-              onSubmit={context.addItem}
+              onSubmit={(e) => context.addItem(e, this.state)}
             >
               <div className={styles.formOptions}>
                 <Radio
